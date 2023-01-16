@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<goldCorpus>
+    <instance id="RoWordNet.ENG30-04379243-n" docsrc="ROWN">
+        <context id="1"> Conducerea PMR și UTM a exploatării a luat hotărârea ca propagandiștii să
+            citească articole din presă, cu respectivele documente la sectoarele miniere înainte de
+            efectuarea apelului nominal. Astfel erau informați nu numai UTM- iștii și membrii PMR ci
+            și marea <head>masă</head> de muncitori. Corespondența cu Zmeurica își urma un curs
+            normal. Matei a încheiat anul școlar de la liceu cu medii destul de bune. Cei doi tineri
+            nu s-au mai văzut până în vară când aveau să se întâlnească la Cluj, la cursul </context>
+        <context id="2">Tu ai ascuns totul, lucrând necinstit. Până când aveai de gând? Până‑ți luai
+            țoalele și fugeai pe ascuns? Ești o... ești o... Nu am cuvinte să mă exprim, asta e! a
+            țipat el trântind pumnul cu putere în <head>masă</head>. - N‑ai cuvinte pentru că ești
+            un limitat. Asta e! a intervenit și mai furioasă femeia, ștergându-și lacrimile pe
+            ascuns. Nu ai fi priceput nimic. Doream să‑ți fac o surpriză. </context>
+        <context id="3"> Nu încurca treburile astea că nu‑ți permit, nerușinato! Tu vrei să te
+            pocnesc? Abia mă abțin... Să‑ți iei lucrurile și să pleci dracului din casa mea, a bătut
+            el iar în <head>masă</head> cu pumnul, privind‑o amenințător și cu atâta dușmănie, încât
+            a convins‑o că așa va face. - Am să plec, nu‑ți fie teamă. Cu așa animal am vrut eu să
+            mă mărit? Nu mi‑a ajuns unul, Doamne?</context>
+    </instance>
+
+    <instance id="RoWordNet." docsrc="ROWN">
+        <context id="1"> </context>
+        <context id="2"> </context>
+
+    </instance>
+</goldCorpus>
