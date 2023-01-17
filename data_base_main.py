@@ -27,7 +27,8 @@ def main():
     sql_create_contexts_table = """ CREATE TABLE IF NOT EXISTS contexts (
                                         id text PRIMARY KEY,
                                         context text NOT NULL,
-                                        lemma text NOT NULL
+                                        lemma text NOT NULL,
+                                        head text NOT NULL
                                     ); """
 
     conn = create_connection(database)
@@ -38,7 +39,7 @@ def main():
         print("Error! cannot create the database connection.")
 
 
-def create_context(conn, task):
+def create_context(conn, context):
     """
     Create a new task
     :param conn:
@@ -46,10 +47,10 @@ def create_context(conn, task):
     :return:
     """
 
-    sql = ''' INSERT INTO contexts(id,context,lemma)
-              VALUES(?,?,?) '''
+    sql = ''' INSERT INTO contexts(id,context,lemma,head)
+              VALUES(?,?,?,?) '''
     cur = conn.cursor()
-    cur.execute(sql, task)
+    cur.execute(sql, context)
     conn.commit()
 
     return cur.lastrowid
