@@ -84,7 +84,7 @@ def operations_for_one_word(word):
             pass
 
 
-file = open('cuvinte.txt', 'r', encoding='utf-8')
+file = open('resources/cuvinte.txt', 'r', encoding='utf-8')
 words = file.readlines()
 file.close()
 

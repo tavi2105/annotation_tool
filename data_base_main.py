@@ -2,7 +2,7 @@ import sqlite3
 from sqlite3 import Error
 
 
-def create_connection(db_file=r"pythonsqlite.db"):
+def create_connection(db_file=r"data/pythonsqlite.db"):
     conn = None
     try:
         conn = sqlite3.connect(db_file)
@@ -22,7 +22,6 @@ def create_table(conn, create_table_sql):
 
 
 def main():
-    database = r"pythonsqlite.db"
 
     sql_create_contexts_table = """ CREATE TABLE IF NOT EXISTS contexts (
                                         id text PRIMARY KEY,
@@ -31,7 +30,7 @@ def main():
                                         head text NOT NULL
                                     ); """
 
-    conn = create_connection(database)
+    conn = create_connection()
 
     if conn is not None:
         create_table(conn, sql_create_contexts_table)

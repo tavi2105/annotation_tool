@@ -1,6 +1,6 @@
 import xml.etree.cElementTree as ET
 
-tree = ET.parse('rown.xml')
+tree = ET.parse('data/rown.xml')
 root = tree.getroot()
 
 
