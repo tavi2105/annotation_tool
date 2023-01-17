@@ -1,20 +1,8 @@
-from get_context import extract_from_html_corpora
 from get_def import get_def_entries
+from data_base_main import create_connection, select_word
 
 dict_contexts = {}
 def_entries = {}
-
-
-def get_list():
-    all_forms = {}
-    for context in dict_contexts:
-        for entry in def_entries:
-            if context in all_forms:
-                all_forms[context].append(entry)
-            else:
-                all_forms[context] = [entry]
-
-    return all_forms
 
 
 def get_contexts():
@@ -28,35 +16,28 @@ def get_defs():
 def create_list(word):
     global dict_contexts
     global def_entries
-    extract_from_html_corpora(word)
-    def_entries = get_def_entries(word)
+    conn = create_connection()
 
-    list_word = list(word)
-    if word[-1] == "a":
-        list_word[-1] = "ă"
-    elif word[-1] == "ă":
-        list_word[-1] = "a"
-    elif word[-2:] == "ul":
-        list_word.pop()
-        list_word.pop()
-    else:
-        list_word.append("ul")
+    all_contexts = select_word(conn, word)
 
-    word = "".join(list_word)
+    list_of_contexts = []
+    for context in all_contexts:
+        defs = get_def_entries(context[2])
+        list_of_contexts.append({
+            "id": context[0],
+            "context": context[1],
+            "lemma": context[2],
+            "definitions": defs
+        })
 
-    extract_from_html_corpora(word)
-    def_entries.update(get_def_entries(word))
+    json = {
+        "word": word,
+        "definitions": list_of_contexts
+    }
 
-    list_word = list(word)
+    print(json)
 
-    list_word.append("ă")
+    return json
 
-    word = "".join(list_word)
-    all_contexts = extract_from_html_corpora(word)
-    print(len(all_contexts))
 
-    dict_contexts = {}
-    for index, value in enumerate(all_contexts):
-        dict_contexts[index] = value
-
-    return get_list()
+create_list('banca')

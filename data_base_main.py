@@ -40,13 +40,6 @@ def main():
 
 
 def create_context(conn, context):
-    """
-    Create a new task
-    :param conn:
-    :param task:
-    :return:
-    """
-
     sql = ''' INSERT INTO contexts(id,context,lemma,head)
               VALUES(?,?,?,?) '''
     cur = conn.cursor()
@@ -54,6 +47,15 @@ def create_context(conn, context):
     conn.commit()
 
     return cur.lastrowid
+
+
+def select_word(conn, word):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM contexts WHERE (head=? OR lemma=?) AND adnoted=false LIMIT 1", (word, word,))
+
+    rows = cur.fetchall()
+
+    return rows
 
 
 if __name__ == '__main__':
