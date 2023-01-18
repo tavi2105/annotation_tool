@@ -1,5 +1,5 @@
 from get_def import get_def_entries
-from data_base_main import create_connection, select_word
+from data_base_main import create_connection, select_word, create_annotation
 
 dict_contexts = {}
 def_entries = {}
@@ -20,19 +20,16 @@ def create_list(word):
 
     all_contexts = select_word(conn, word)
 
-    list_of_contexts = []
-    for context in all_contexts:
-        defs = get_def_entries(context[2])
-        list_of_contexts.append({
-            "id": context[0],
-            "context": context[1],
-            "lemma": context[2],
-            "definitions": defs
-        })
+    context = all_contexts[0]
+    get_def_entries(word)
+    defs = get_def_entries(context[2])
 
     json = {
         "word": word,
-        "definitions": list_of_contexts
+        "context_id": context[0],
+        "context": context[1],
+        "lemma": context[2],
+        "definitions": defs
     }
 
     print(json)
@@ -40,4 +37,6 @@ def create_list(word):
     return json
 
 
-create_list('banca')
+def add_annotation(wn_id, context, context_id):
+    conn = create_connection()
+    create_annotation(conn, wn_id, context, context_id)

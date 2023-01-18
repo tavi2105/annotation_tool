@@ -11,7 +11,7 @@ full_list = create_list(word)
 defs = get_defs()
 contexts = get_contexts()
 
-adnotations = {}
+annotations = {}
 
 for item in full_list:
     print("\nCONTEXT: " + contexts[item])
@@ -22,27 +22,27 @@ for item in full_list:
     number = input(">>> Intodu numarul definitiei corecte:\n")
 
     if not number == "skip" and 0 < int(number) < len(full_list[item]) - 1:
-        adnotations[item] = full_list[item][int(number)]
+        annotations[item] = full_list[item][int(number)]
 
-full_adnotations = {}
-for adno in adnotations:
-    if adnotations[adno] in full_adnotations:
-        full_adnotations[adnotations[adno]].append(adno)
+full_annotations = {}
+for anno in annotations:
+    if annotations[anno] in full_annotations:
+        full_annotations[annotations[anno]].append(anno)
     else:
-        full_adnotations[adnotations[adno]] = [adno]
+        full_annotations[annotations[anno]] = [anno]
 
 root = minidom.Document()
 
 xml = root.createElement('goldCorpus')
 root.appendChild(xml)
 
-for adno in full_adnotations:
+for anno in full_annotations:
     instance = root.createElement('instance')
-    instance.setAttribute('id', "RoWordNet." + adno)
+    instance.setAttribute('id', "RoWordNet." + anno)
     instance.setAttribute('docsrc', "ROWN")
     xml.appendChild(instance)
 
-    for index, value in enumerate(full_adnotations[adno]):
+    for index, value in enumerate(full_annotations[anno]):
         context = root.createElement("context")
         context.setAttribute('id', str(index))
         context.appendChild(root.createTextNode(contexts[value]))
